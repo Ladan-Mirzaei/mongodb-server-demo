@@ -4,9 +4,10 @@ import "./App.css";
 function App() {
   const [users, setUsers] = useState([]);
   const [inputValue, setInputValue] = useState({});
+  const API_LINK = import.meta.env.VITE_API_LINK;
 
   async function fetchUsers() {
-    const response = await fetch("${API_LINK}/users/");
+    const response = await fetch(`${API_LINK}/users/`);
     if (!response.ok) {
       console.warn("Response is not OK!");
     }
@@ -20,7 +21,7 @@ function App() {
   }, []);
 
   async function handleUserOnClick() {
-    const response = await fetch("${API_LINK}/users/", {
+    const response = await fetch(`${API_LINK}/users/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: inputValue.name }),
@@ -37,9 +38,8 @@ function App() {
   //       handleOnSubmit(name, age);
   //     }
   //   }, [name, age]);
-  const API_LINK = import.meta.env.VITE_API_LINK;
   async function handleDeleteOnClick() {
-    const response = await fetch("${API_LINK}/users/", {
+    const response = await fetch(`${API_LINK}/users/`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({}),
