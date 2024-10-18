@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const db = mongoose.connect("mongodb://127.0.0.1/note-taking-app");
+dotenv.config();
+
+const DB_LINK = process.env.DB_LINK;
+console.log(DB_LINK);
+
+const db = mongoose.connect(`${DB_LINK}/note-taking-app`);
 
 export default db;

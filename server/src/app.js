@@ -25,7 +25,12 @@ app.get("/users", async (req, res) => {
   const result = await User.find({});
   res.json(result);
 });
+app.delete("/users", async (req, res) => {
+  const data = req.body;
+  const result = await User.deleteOne({});
 
+  res.json(result);
+});
 app.listen(PORT, () => {
   console.log(`Server is running at port: ${PORT}`);
 });
